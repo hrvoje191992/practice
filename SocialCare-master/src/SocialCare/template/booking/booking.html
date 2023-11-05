@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>SocialCare | Hospital Booking Service</title>
+<meta name="description" content="Book hospital appointments and receieve real-time update on your token number">
+<link rel="author" content="Nikhil, Nirmal, Anu and Ritty" />
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'booking/img/favicon.png' %}">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'booking/css/normalize.min.css' %}" media="all" />
+<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'booking/css/flexboxgrid.css' %}" media="all" />
+<link rel="stylesheet" type="text/css" href="{% static 'booking/css/theme.css' %}" media="all" />
+<link rel="stylesheet" href="{% static 'booking/css/bootstrap.min.css' %}">
+<!-- animate CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/animate.css' %}">
+<!-- owl carousel CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/owl.carousel.min.css' %}">
+<!-- themify CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/themify-icons.css' %}">
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/flaticon.css' %}">
+<!-- magnific popup CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/magnific-popup.css' %}">
+<!-- nice select CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/nice-select.css' %}">
+<!-- swiper CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/slick.css' %}">
+<!-- style CSS -->
+<link rel="stylesheet" href="{% static 'booking/css/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <header class="fade-in">
+    <div class="navigation-bar flex middle-xs">
+      <a href="/"><img src="{% static 'booking/img/logo.svg' %}" class="logo"></a>
+      <nav class="navbar navbar-expand-lg navbar-light">
+
+          <div class="collapse navbar-collapse main-menu-item justify-content-right" id="navbarSupportedContent">
+              <ul class="navbar-nav align-items-right">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="/">Home</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class=" btn btn-primary active" data-toggle="modal" data-target="#modalTrack">Token tracking</a>
+
+                  </li>
+                  </div>
+
+				</ul>
+          </div>
+      </nav>
+    </div>
+    <div class="hero flex middle-xs" style="background-image: url('{% static 'booking/img/hero-image.jpg' %}'), linear-gradient(1.35deg, #C0DAF1 -3.47%, #FFFFFF 98.58%);">
+
+      <div class="container searchposition" >
+        <div class="row no-gutters width">
+
+          <div class="col-10  input-group-append">
+			<input type="text" placeholder="Enter clinic/hospital/speciality">
+						<!-- TODO: implement search using ajax -->
+            <button class="btn btn-default" value="Search" type="submit" onclick="search()">
+				<img src="{% static 'booking/img/search-icon.png' %}" alt="">
+			</button>
+          </div>
+
+        <div>
+          <!-- banner part start-->
+          <section class="banner_part">
+              <div class="container">
+                  <div class="row align-items-center">
+                      <div class="col-lg-5 col-xl-5">
+                          <div class="hero_text">
+                              <div class="banner_text_iner">
+                                  <h1>Booking Appoinments</h1>
+
+                                  <h1> Made Easy </h1>
+								<br />
+                                  <p>A real time reliable booking service for hospitals. We aim to help users to book appoiment in hospitals with real time updates on token number and availablity on their doctors schedule. </p>
+
+
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-7">
+                          <div class="banner_img">
+                              <img src="{% static 'booking/img/banner_img.png' %}" alt="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+  </header>
+
+
+
+  <div class="modal fade" id="modalTrack" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Track your token number</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+
+          <div class="md-form mb-5">
+
+            <div class="modal-body">
+
+          <label for="">Track ID:</label>
+          <input type="text"></input>
+          <br />
+          <br />
+            <button class=" btn btn-primary" data-toggle="modal" data-target="#modalTrackDetails" >Track Token No.</button>
+
+        </div>
+      </div>
+
+        <div class="modal fade" id="modalTrackDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Token Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body mx-3">
+
+                <div class="md-form mb-5">
+
+                  <div class="modal-body">
+
+                      <h5>Name : {}</h5>
+                      <h5>Hospital Name : {}</h5>
+                      <h5>Department : {}</h5>
+                      <h5>Doctor: {}</h5>
+                      <h5>Hospital Id : {}</h5>
+                      <h5>Date scheduled : </h5>
+                      <h2> Token No right now:</h>
+
+
+         </div>
+
+
+
+
+
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?callback=polyfillsAreLoaded" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="{% static 'booking/js/booking.js' %}" defer></script>
+</body>
+
+</html>

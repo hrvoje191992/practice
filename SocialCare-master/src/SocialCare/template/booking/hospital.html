@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <title>SocialCare | Hospital Booking Service</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Book hospital appointments and receieve real-time update on your token number">
+  <meta name="author" content="Nikhil, Nirmal, Anu and Ritty" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'booking/img/favicon.png' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'booking/css/normalize.min.css' %}" media="all" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'booking/css/flexboxgrid.css' %}" media="all" />
+  <link rel="stylesheet" type="text/css" href="{% static 'booking/css/theme.css' %}" media="all" />
+
+</head>
+<body class="fade-in">
+
+	{% if error == True %}
+		{{ err_msg }}
+	{% else %}
+	<div class="navigation-bar flex middle-xs">
+		<a href="/"><img src="{% static 'booking/img/logo.svg' %}" alt="" class="logo"></a>
+    </div>
+
+    <div class="hero flex middle-xs" style="flex-direction: column; background-image: url('{% static 'booking/img/hero-image.jpg' %}'), linear-gradient(1.35deg, #C0DAF1 -3.47%, #FFFFFF 98.58%)">
+    	<div class="container searchposition" align="center">
+			<div class="col-lg-4 col-md-3 col-sm-12 col-xs-12  text-center square">
+				<div class="clearfix text-center hospital_description" >
+					<h1>{{ hospital.name }}</h1>
+					<p>{{ hospital.address }}</p>
+					<br>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="card-deck" style="display: flex; flex-wrap: wrap;">
+			<div class="card" style="width: 18rem; height:100%">
+				<img class="card-img-top" src="{% static 'booking/img/favicon.png' %}" alt="Card image cap">
+				<div class="card-body">
+				<h5 class="card-title">Dr. {}</h5>
+				<p class="card-text">Department {}</p>
+				<a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#modalRegisterForm">Book Now</a>
+				</div>
+			</div>
+			<div class="card" style="width: 18rem;height:100%">
+				<img class="card-img-top" src="{% static 'booking/img/favicon.png' %}" alt="Card image cap">
+				<div class="card-body">
+				<h5 class="card-title">Dr. {}</h5>
+				<p class="card-text">Department {}</p>
+				<a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#modalRegisterForm">Book Now</a>
+				</div>
+			</div>
+			<div class="card" style="width: 18rem;height:100%">
+				<img class="card-img-top" src="{% static 'booking/img/favicon.png' %}" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Dr.{}</h5>
+					<p class="card-text">Department {}</p>
+					<a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#modalRegisterForm">Book Now</a>
+				</div>
+			</div>
+		</div>
+
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Booking your appointment</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+
+          <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          <input type="text" id="orangeForm-name" class="form-control validate">
+
+        </div>
+        <div class="md-form mb-5">
+
+          <label data-error="wrong" data-success="right" for="orangeForm-number">Enter hospital ID if any</label>
+          <input type="id" id="orangeForm-ID" class="form-control validate">
+
+        </div>
+
+        <div class="md-form mb-4">
+                <label data-error="wrong" data-success="right" for="orangeForm-number">Your mobile number</label>
+            <input type="number" id="orangeForm-number" class="form-control validate">
+        </div>
+        <div class="md-form mb-4">
+                <label data-error="wrong" data-success="right" for="orangeForm-date">Choose date for booking</label>
+            <input type="date" id="orangeForm-date" class="form-control validate">
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmation" data-dismiss="modal" >Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Booking confirmed</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+
+        <div class="md-form mb-5">
+
+          <div class="modal-body">
+            <div class="text-center">
+              <img src="{% static 'booking/img/success_icon.png' %}" id="resize" />
+                  <button class="btn btn-success">SUCCESSFULLY BOOKED</button>
+
+                    <h5>Name : {}</h5>
+                    <h5>Hospital Name : {}</h5>
+                    <h5>Department : {}</h5>
+                    <h5>Doctor: {}</h5>
+                    <h5>Hospital Id : {}</h5>
+                    <h5>Date scheduled : </h5>
+                    <h2> Token No:</h>
+                    <h6>Get real-time updates on your token number from homepage</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	{% endif %}
+
+
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?callback=polyfillsAreLoaded" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="{% static 'booking/js/hospital.js' %}" defer></script>
+</body>
+
+</html>
